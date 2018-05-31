@@ -28,7 +28,7 @@ export default new Router({
       component: Query
     },
     {
-      path: '/',
+      path: '/admin',
       name: 'admin',
       component: Admin
     }
