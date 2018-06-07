@@ -51,17 +51,8 @@
 </template>
 
 <script>
-import top from './query/top.vue'
-import navi from './public/navi.vue'
-import botto from './public/bottom.vue'
-import conten from './query/content.vue'
 export default {
-  components: {
-    top,
-    navi,
-    conten,
-    botto
-  },
+  components: {},
   name: 'admin',
   data: function () {
     return {
