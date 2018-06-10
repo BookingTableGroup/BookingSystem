@@ -1,10 +1,10 @@
 <template>
-  <v-toolbar fixed  class="brown" dark>
+  <v-toolbar fixed  class="cyan" dark>
     <v-toolbar-title class="mr-4">
       <span
         class="home"
         @click="navigateTo({name: 'root'})">
-        TabTracker
+        主页←
       </span>
     </v-toolbar-title>
 
@@ -22,14 +22,14 @@
         flat
         dark
         @click="navigateTo({name: 'login'})">
-        Login
+        登录
       </v-btn>
 
       <v-btn
         flat
         dark
         @click="navigateTo({name: 'register'})">
-        Sign Up
+        注册
       </v-btn>
     </v-toolbar-items>
   </v-toolbar>
@@ -49,7 +49,6 @@ export default {
 .home {
   cursor: pointer;
 }
-
 .home:hover {
   color: #E9E;
 }

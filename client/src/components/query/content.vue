@@ -14,7 +14,6 @@
       <p id="tablePhone">联系电话： {{userId}}</p>
     </div>
     <div id="foodInfo">
-      <p id="foodTitle">菜品信息</p>
       <div id="menu">
         <div v-for="item in items" :key="item.id">
           <item :item="item"></item>
@@ -42,7 +41,6 @@ export default {
         {name: '鱼香肉丝', price: 30},
         {name: '小鸡炖蘑菇', price: 60}
       ]
-
     }
   }
 }
@@ -53,87 +51,95 @@ export default {
     height: 400px;
     /* border: 1px solid blue; */
   }
-
   #menu {
-    float: left;
+    margin-left:-35px;
     height: 400px;
     width: 20%;
   }
-
   #curOrder, #hisOrder {
+    margin-left: -25px;
     height: 40px;
     width: 60%;
-    background-color: rgba(237, 194, 130, 1);
-    color: rgba(255, 255, 255, 1);
+    background-color: rgb(000, 188, 212);
+    color: white;
     font-size: 25px;
     font-family: Roboto;
-    border: 3px solid rgba(255, 255, 255, 1);
+    box-shadow: #666 0px 0px 5px;
     margin-top: 40px;
   }
-
   #hisOrder {
-    margin-top: 0px;
-    background-color: rgba(217, 150, 72, 1);
-    color: rgba(110, 56, 7, 1);
+    margin-top: 10px;
+    background-color: rgb(000, 188, 212);
   }
-
   #tableInfo {
+    margin-top: 40px;
+    background-color: white;
     float: left;
     height: 400px;
     width: 40%;
+    box-shadow: #666 0px 0px 5px;
   }
-
   #deleteTable, #foodTitle{
     margin-top: 40px;
     float: left;
     width: 100%;
     height: 50px;
-    color: rgba(16, 16, 16, 1);
+    color: black;
     font-size: 36px;
     font-family: Roboto;
   }
-
   #deleteIcon{
     width: 30px;
   }
-
   #tableMem {
     margin-top: 20px;
     float: left;
     width: 100%;
     height: 150px;
-    border: 3px groove white;
+    border: 3px solid white;
+    box-shadow: #666 0px 0px 5px;
     color: rgba(102, 93, 102, 1);
     font-family: Roboto;
-
   }
-
   #table8{
     float: left;
-    height: 150px;
+    height: 145px;
     width: 240px;
   }
-
   #tableId{
+    color:black;
     margin-top: 25px;
     font-size: 50px;
   }
-
-  #tablePhone {
-    margin-top: 20px;
-    float: left;
+  #tableTime {
     height: 100px;
+    color:white;
   }
-
+  #tablePhone {
+    margin-top: 100px;
+    margin-left: 60%;
+    height: 120px;
+    color:black;
+  }
+  #foodTitle {
+    height: 30px;
+    color:black;
+    margin-left:-75px;
+    font-size:20px;
+    font-family: Roboto;
+  }
   #foodInfo {
-    float: left;
+    float:left;
+    margin-top:-390px;
+    margin-left:60%;
     height: 400px;
     width: 40%;
+    color:red
   }
-
   #menu {
     float: left;
-    height: 300px;
-  }
+    margin-left:25px;
+    height: 250px;
 
+  }
 </style>

@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Query from '@/components/Query'
 import Admin from '@/components/Admin'
-import Home from '@/components/Home'
+import Book from '@/components/Book'
 import Food from '@/components/Food'
+import Home from '@/components/Home'
 
 Vue.use(Router)
 
@@ -15,7 +15,7 @@ export default new Router({
     {
       path: '/',
       name: 'root',
-      component: Hello
+      component: Home
     }, {
       path: '/register',
       name: 'register',
@@ -35,9 +35,9 @@ export default new Router({
       component: Admin
     },
     {
-      path: '/home',
-      name: 'home',
-      component: Home
+      path: '/book',
+      name: 'book',
+      component: Book
     },
     {
       path: '/food',

@@ -3,12 +3,16 @@
     <section class="topInfo">
       <top></top>
     </section>
+    <section>
+        <div id= "space"></div>
+    </section>
     <nav class="fourNav">
       <navi></navi>
     </nav>
     <section class="content-container"><!-- 内容容器 -->
       <conten></conten>
     </section>
+    <br/> <br/> <br/> <br/> <br/>
     <section class="bottom">
       <botto></botto>
     </section>
@@ -31,6 +35,11 @@ export default {
 </script>
 
 <style>
+  #space {
+    float: right;
+    width: 80%;
+    /* border: 2px solid rgb(110, 86, 7); */
+  }
    *{
     margin: 0;
     padding: 0;

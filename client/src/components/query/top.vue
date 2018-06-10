@@ -1,13 +1,12 @@
 <template>
   <div id="topInfo">
-    <h1>{{title}}</h1>
+    <h1 style="color:white">{{title}}</h1>
     <div id="user">
       <p id = "userId">{{userId}}</p>
       <img id="userIcon" src="../../assets/icon/userIcon.png"/>
     </div>
     <div id="notice">
-      <img id="horn" src="../../assets/icon/hornIcon.png"/>
-      <p id="noticeContent"> {{notice}}</p>
+      <p id="noticeContent">☺{{notice}}</p>
     </div>
   </div>
 </template>
@@ -28,16 +27,17 @@ export default {
 
   #topInfo {
     height: 120px;
-    background-color: rgba(110, 56, 7, 1);
+    width:100%;
+    background-color: rgb(000, 188, 212);
+    box-shadow: #666 0px 0px 5px;
   }
 
   h1 {
-    width: 500px;
+    width: 300px;
     height: 80px;
     line-height: 104px;
-    color: rgba(237, 194, 130, 1);
-    font-size: 60px;
-    text-align: center;
+    color: white;
+    font-size: 40px;
     font-family: Roboto;
   }
 
@@ -50,7 +50,7 @@ export default {
     float: left;
     margin-left: 200px;
     font-size: 20px;
-    color:#FCEACF;
+    color:white;
   }
 
   #userIcon {
@@ -61,7 +61,7 @@ export default {
 
   #notice {
     float: left;
-    color: antiquewhite;
+    color: white;
     margin-top: 10px;
     margin-left: 500px;
   }

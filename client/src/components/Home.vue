@@ -14,6 +14,7 @@
                 <p v-text="admin"></p>
             </div>
         </div>
+        <br/>
         <!--show when login success on the top right-->
         <div id="userInfo" v-show="afterLogin">
             <p v-text="phone"></p>
@@ -31,28 +32,30 @@
         <img src="../assets/right.png" id="right" v-on:click="moveRight" v-bind:onmouseover="clearAuto"
              v-bind:onmouseout="slideAuto">
         <hr />
-
+        <br/>
         <!--choose things to do -->
         <div id="menu">
             <div class="selection">
                 <div class="ellipse">
                     <img src="../assets/query.png">
                 </div>
-                <button v-text="query" class="btn"></button>
+                <button v-text="query" class="btn" @click="goQuery"></button>
             </div>
+            
             <div class="selection">
                 <div class="ellipse">
                     <img src="../assets/table.png">
                 </div>
-                <button v-text="bookTable" class="btn"></button>
+                <button v-text="bookTable" class="btn" @click="goBook"></button>
             </div>
             <div class="selection">
                 <div class="ellipse">
                     <img src="../assets/food.png">
                 </div>
-                <button v-text="bookFood" class="btn"></button>
+                <button v-text="bookFood" class="btn" @click="goFood"></button>
             </div>
         </div>
+        <br/>
         <!--bottom information-->
         <div id="homeBottom">
             <div class="homeBottomInfo">
@@ -137,6 +140,15 @@
       },
       moveRight: function () {
         this.cur = (this.cur + 7) % 8
+      },
+      goQuery: function () {
+        this.$router.push('/query')
+      },
+      goBook: function () {
+        this.$router.push('/book')
+      },
+      goFood: function () {
+        this.$router.push('/food')
       }
     },
     mounted: function () {
@@ -147,11 +159,12 @@
 
 <style>
     #topInfo {
-        background-color: rgba(110,56,7,1);
+        background-color: rgb(000, 188, 212);
         height:130px;
+        box-shadow: #666 0px 0px 5px
     }
     h1 {
-        color:#EDC282;
+        color:white;
         font-size:55px;
         padding-top:20px;
         padding-left: 100px;
@@ -192,7 +205,7 @@
         width:80px;
     }
     #admin p {
-        color:#FAD59D;
+        color:white;
         margin-top: -5px;
         padding-left: 18px;
         font-size:20px;
@@ -217,7 +230,7 @@
     /*photo-list*/
     hr {
         margin-top:3px;
-        border: 2px solid #F5BC67;
+        border: 2px solid rgb(000, 188, 212);
     }
 
     #photo-list {
@@ -236,8 +249,9 @@
     }
     #left,#right {
         padding-top: 50px;
-        width: 58px;
-        height:80px;
+        width: 40px;
+        height:90px;
+        
     }
     #left {
         float: left;
@@ -249,46 +263,53 @@
     }
     .pic {
         margin-top:2px;
-        width: 100%;
+        width: 80%;
         height: 153px;
         float: left;
         overflow: hidden;
         display: inline-block;
+        box-shadow: #666 0px 0px 10px;
     }
     /*menu*/
     #menu {
-        height: 260px;
+        height: 300px;
+        box-shadow: #666 0px 0px 10px;
     }
     #homePage #homeBottom {
       height: 90px;
-      background-color: rgba(110,56,7,1);
+      background-color: rgb(000, 188, 212);
     }
     .homeBottomInfo {
         float:left;
         width:33.3%;
     }
     .selection {
-        width: 32%;
+        margin-top:15px;
+        margin-left:250px;
+        width: 15%;
         float: left;
+        
     }
     .ellipse {
-        width: 75%;
+        width: 70%;
         height: 180px;
         margin-top: 10px;
-        margin-left: 14%;
+        margin-left: 18%;
         margin-bottom: 16px;
-        border: 3px solid #CC8B3F;
+        border: 4px solid rgb(000, 188, 212);
         border-radius: 50%;
+
     }
     .ellipse img {
-        width: 60%;
-        margin-left: 9%;
-        height:100%;
+        width: 80%;
+        margin-left: 4%;
+        margin-top:16px;
+        height:80%;
         vertical-align: center;
     }
     #menu .btn {
-        background-color:#EDC282;
-        color:#6E3807;
+        background-color:rgb(000, 188, 212);
+        color:white;
         border-radius: 10px;
         width: 70%;
         height:35px;
@@ -300,7 +321,7 @@
       height: 40px;
     }
     .bottomInfo {
-      color:#FCEACF;
+      color:white;
       text-align:center;
       padding-top:5px;
     }

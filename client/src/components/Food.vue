@@ -9,14 +9,20 @@
     </div>
     <div id="dishes">
       <div class="dish" v-for="item in items" v-bind:key="item.foodId">
-        <img class="picture" src="../../static/chicken.jpg"/>
-        <img class="star" src="../../static/staricon.png"/>
+        <img class="picture" src="../assets/dishes/chicken.jpg"/>
+        <img class="star" src="../assets/2.png"/>
         <span class="price">¥ {{item.price}}</span>
         <div class="iteminfo">
           <input type="checkbox" class="check" :checked=item.isChosen>
           <span class="name">{{item.name}}</span>
         </div>
       </div>
+    </div>
+    <div>
+      <button type="button" id = "tableButton1"
+      v-on:click="postData"
+      >确认订单</button>
+      <button type="button" id = "tableButton2">取消订单</button>
     </div>
   </div>
 </template>
@@ -60,14 +66,15 @@ export default {
   height: 50px;
   line-height: 41px;
   border-radius: 9px;
-  background-color: rgba(217, 150, 72, 1);
-  color: rgba(120, 47, 6, 1);
+  background-color: rgb(000, 188, 212);
+  color: white;
   font-size: 28px;
   text-align: center;
   font-family: "Microsoft YaHei";
-  border: 5px solid rgba(255, 255, 255, 1);
+  /*border: 5px solid rgba(255, 255, 255, 1);*/
   position: relative;
   outline: none;
+  box-shadow: #666 0px 0px 10px;
 }
 .name, .check, .star, .price {
   float: right;
@@ -112,6 +119,7 @@ export default {
   margin-right: 1.4%;
   margin-top: 0.5%;
   margin-bottom: 0.5%;
+  box-shadow: #666 0px 0px 10px;
 }
 
 .iteminfo {
@@ -144,5 +152,37 @@ export default {
   margin-bottom: 6%;
   margin-right: 5%;
 }
+
+#tableButton1 {
+    background-color:rgb(000, 188, 212);
+    border: none;
+    color: white;
+    padding: 8px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    margin-left:500px;
+    box-shadow: #666 0px 0px 5px;
+  }
+
+  #tableButton2 {
+    background-color:rgb(000, 188, 212);
+    border: none;
+    color: white;
+    padding: 8px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    margin-left:100px;
+    box-shadow: #666 0px 0px 5px;
+  }
 
 </style>
