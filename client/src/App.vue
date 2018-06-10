@@ -2,7 +2,7 @@
   <div id="app">
     <v-app>
       <page-header />
-      
+
       <main>
         <v-container fluid>
           <router-view></router-view>
@@ -31,5 +31,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+* {
+  margin: 0;
 }
 </style>

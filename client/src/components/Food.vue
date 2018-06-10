@@ -9,8 +9,8 @@
     </div>
     <div id="dishes">
       <div class="dish" v-for="item in items" v-bind:key="item.foodId">
-        <img class="picture" src="../../assets/dishes/chicken.jpg"/>
-        <img class="star" src="../../assets/icon/staricon.png"/>
+        <img class="picture" src="../../static/chicken.jpg"/>
+        <img class="star" src="../../static/staricon.png"/>
         <span class="price">¥ {{item.price}}</span>
         <div class="iteminfo">
           <input type="checkbox" class="check" :checked=item.isChosen>

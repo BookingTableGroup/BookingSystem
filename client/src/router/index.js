@@ -5,6 +5,8 @@ import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Query from '@/components/Query'
 import Admin from '@/components/Admin'
+import Home from '@/components/Home'
+import Food from '@/components/Food'
 
 Vue.use(Router)
 
@@ -23,7 +25,7 @@ export default new Router({
       name: 'login',
       component: Login
     }, {
-      path: '/',
+      path: '/query',
       name: 'query',
       component: Query
     },
@@ -31,6 +33,16 @@ export default new Router({
       path: '/admin',
       name: 'admin',
       component: Admin
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: Home
+    },
+    {
+      path: '/food',
+      name: 'food',
+      component: Food
     }
   ]
 })

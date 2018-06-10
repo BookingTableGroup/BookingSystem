@@ -1,7 +1,7 @@
 <template>
-  <v-toolbar fixed class="cyan" dark>
+  <v-toolbar fixed  class="brown" dark>
     <v-toolbar-title class="mr-4">
-      <span 
+      <span
         class="home"
         @click="navigateTo({name: 'root'})">
         TabTracker
@@ -18,15 +18,15 @@
     <v-spacer></v-spacer>
 
     <v-toolbar-items>
-      <v-btn 
-        flat 
+      <v-btn
+        flat
         dark
         @click="navigateTo({name: 'login'})">
         Login
       </v-btn>
-      
-      <v-btn 
-        flat 
+
+      <v-btn
+        flat
         dark
         @click="navigateTo({name: 'register'})">
         Sign Up
