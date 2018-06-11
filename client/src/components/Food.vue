@@ -33,34 +33,37 @@ export default {
     return {
       items: [{foodId: 1, price: 50, isChosen: true, name: '炸鸡块块'},
         {foodId: 2, price: 100, isChosen: false, name: '香肠鸡腿'},
-        {foodId: 3, price: 200, isChosen: false, name: '炸鸡汉堡'},
-        {foodId: 4, price: 400, isChosen: true, name: '非常好吃'},
-        {foodId: 5, price: 400, isChosen: true, name: '非常好吃'}]
+        {foodId: 3, price: 20, isChosen: false, name: '炸鸡汉堡'},
+        {foodId: 4, price: 40, isChosen: true, name: '巨无霸'},
+        {foodId: 5, price: 60, isChosen: true, name: '羊肉泡馍'},
+        {foodId: 6, price: 30, isChosen: true, name: '酱骨架'},
+        {foodId: 7, price: 100, isChosen: true, name: '可乐鸡翅'},
+        {foodId: 8, price: 30, isChosen: true, name: '白切鸡'},
+        {foodId: 9, price: 10, isChosen: true, name: '水煮牛肉'},
+        {foodId: 10, price: 10, isChosen: true, name: '鱼香肉丝'},
+        {foodId: 11, price: 10, isChosen: true, name: '清蒸鳜鱼'},
+        {foodId: 12, price: 5, isChosen: true, name: '夫妻肺片'}]
     }
   }
 }
 </script>
 
 <style>
-
 #container {
   height: 400px;
   position: relative;
 }
-
 #sidebar {
   float: left;
   height: 400px;
   width: 20%;
 }
-
 #dishes {
   float: right;
   width: 80%;
   height: 400px;
   position: relative;
 }
-
 .select {
   width: 99%;
   height: 50px;
@@ -80,7 +83,6 @@ export default {
   float: right;
   position: relative;
 }
-
 .check {
   width: 10%;
   height: 48%;
@@ -90,13 +92,11 @@ export default {
   top: 25%;
   outline: none;
 }
-
 .picture {
   width: 50%;
   height: 60%;
   position: relative;
 }
-
 .star {
   right: 3%;
   top: 15%;
@@ -106,7 +106,6 @@ export default {
   border: none;
   position: relative;
 }
-
 .dish {
   width: 22%;
   height: 30%;
@@ -121,7 +120,6 @@ export default {
   margin-bottom: 0.5%;
   box-shadow: #666 0px 0px 10px;
 }
-
 .iteminfo {
   width: 98%;
   height: 34%;
@@ -130,7 +128,6 @@ export default {
   border: 1px solid rgba(187, 187, 187, 1);
   position: relative;
 }
-
 .name {
   font-size: 120%;
   font-family: Microsoft Yahei;
@@ -139,7 +136,6 @@ export default {
   right: 50%;
   top: 20%;
 }
-
 .price {
   width: 18%;
   height: 15%;
@@ -152,7 +148,6 @@ export default {
   margin-bottom: 6%;
   margin-right: 5%;
 }
-
 #tableButton1 {
     background-color:rgb(000, 188, 212);
     border: none;
@@ -168,7 +163,6 @@ export default {
     margin-left:500px;
     box-shadow: #666 0px 0px 5px;
   }
-
   #tableButton2 {
     background-color:rgb(000, 188, 212);
     border: none;
@@ -184,5 +178,4 @@ export default {
     margin-left:100px;
     box-shadow: #666 0px 0px 5px;
   }
-
 </style>
