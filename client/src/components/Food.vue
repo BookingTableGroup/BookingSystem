@@ -33,9 +33,16 @@ export default {
     return {
       items: [{foodId: 1, price: 50, isChosen: true, name: '炸鸡块块'},
         {foodId: 2, price: 100, isChosen: false, name: '香肠鸡腿'},
-        {foodId: 3, price: 200, isChosen: false, name: '炸鸡汉堡'},
-        {foodId: 4, price: 400, isChosen: true, name: '非常好吃'},
-        {foodId: 5, price: 400, isChosen: true, name: '非常好吃'}]
+        {foodId: 3, price: 20, isChosen: false, name: '炸鸡汉堡'},
+        {foodId: 4, price: 40, isChosen: true, name: '巨无霸'},
+        {foodId: 5, price: 60, isChosen: true, name: '羊肉泡馍'},
+        {foodId: 6, price: 30, isChosen: true, name: '酱骨架'},
+        {foodId: 7, price: 100, isChosen: true, name: '可乐鸡翅'},
+        {foodId: 8, price: 30, isChosen: true, name: '白切鸡'},
+        {foodId: 9, price: 10, isChosen: true, name: '水煮牛肉'},
+        {foodId: 10, price: 10, isChosen: true, name: '鱼香肉丝'},
+        {foodId: 11, price: 10, isChosen: true, name: '清蒸鳜鱼'},
+        {foodId: 12, price: 5, isChosen: true, name: '夫妻肺片'}]
     }
   }
 }
