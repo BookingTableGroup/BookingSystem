@@ -1,9 +1,9 @@
 <template>
-  <div id="topInfo">
+  <div id="topInfo_1">
     <h1 style="color:white">{{title}}</h1>
-    <div id="user">
+    <div id="user_1">
       <p id = "userId">{{userId}}</p>
-      <img id="userIcon" src="../../assets/icon/userIcon.png"/>
+      <img id="userIcon_1" src="../../assets/icon/userIcon.png"/>
     </div>
     <div id="notice">
       <p id="noticeContent">☺{{notice}}</p>
@@ -25,7 +25,7 @@ export default {
 
 <style>
 
-  #topInfo {
+  #topInfo_1 {
     height: 120px;
     width:100%;
     background-color: rgb(000, 188, 212);
@@ -41,7 +41,7 @@ export default {
     font-family: Roboto;
   }
 
-  #user {
+  #user_1 {
     float: right;
     margin-top: -80px;
   }
@@ -53,7 +53,7 @@ export default {
     color:white;
   }
 
-  #userIcon {
+  #userIcon_1 {
     margin-top: -4px;
     height: 22px;
     padding-top:5px;
