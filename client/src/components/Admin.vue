@@ -1,12 +1,12 @@
 <!--by Mingyf 2018-05-->
 <template>
 <div id="admin" v-show="showAdmin">
-  <h1 v-html="title"></h1>
+  <div id="h1_admin" v-html="title"></div>
   <div class = "line"> </div>
   <div id = "tablebox">
     <div class="leftbar">
       <div id = "homepageicon">
-        <img id="adminIcon" src="../assets/14.png"  @click="navigateTo({name: 'register'})">
+        <img id="adminIcon_admin" src="../assets/14.png"  @click="navigateTo({name: 'register'})">
       </div>
       <div id = "adminicon">
         <img src="../assets/12.png">
@@ -135,7 +135,7 @@ export default {
         background:rgb(000, 188, 212);
     }
 
-    h1 {
+    #h1_admin {
         width:100%;
         height:70px;
         margin-top:50px;
@@ -170,7 +170,7 @@ export default {
         margin-left:2%;
     }
 
-    #adminIcon {
+    #adminIcon_admin {
         margin-right:2%;
         /*float:left;*/
         width:100%;
