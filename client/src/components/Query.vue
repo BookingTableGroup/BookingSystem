@@ -1,8 +1,8 @@
 <template>
   <section class="container"> <!-- 最外层容器 -->
-    <section class="topInfo">
-      <top></top>
-    </section>
+    <!-- <section class="topInfo"> -->
+      <!-- <top></top> -->
+    <!-- </section> -->
     <section>
         <div id= "space"></div>
     </section>
@@ -13,9 +13,9 @@
       <conten></conten>
     </section>
     <br/> <br/> <br/> <br/> <br/>
-    <section class="bottom">
-      <botto></botto>
-    </section>
+    <!-- <section class="bottom"> -->
+      <!-- <botto></botto> -->
+    <!-- </section> -->
   </section>
 </template>
 
