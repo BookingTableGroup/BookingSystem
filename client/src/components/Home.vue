@@ -34,7 +34,7 @@
         <hr />
         <br/>
         <!--choose things to do -->
-        <div id="menu">
+        <div id="menu_1">
             <div class="selection">
                 <div class="ellipse">
                     <img src="../assets/query.png">
@@ -270,8 +270,8 @@
         display: inline-block;
         box-shadow: #666 0px 0px 10px;
     }
-    /*menu*/
-    #menu {
+
+    #menu_1 {
         height: 300px;
         box-shadow: #666 0px 0px 10px;
     }
@@ -307,7 +307,7 @@
         height:80%;
         vertical-align: center;
     }
-    #menu .btn {
+    #menu_1 .btn {
         background-color:rgb(000, 188, 212);
         color:white;
         border-radius: 10px;
