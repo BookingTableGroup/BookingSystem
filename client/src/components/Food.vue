@@ -9,7 +9,7 @@
     </div>
     <div id="dishes">
       <div class="dish" v-for="item in items" v-bind:key="item.foodId">
-        <img class="picture" src="../assets/dishes/chicken.jpg"/>
+        <img class="picture" :src="item.image"/>
         <img class="star" src="../assets/2.png"/>
         <span class="price">¥ {{item.price}}</span>
         <div class="iteminfo">
@@ -18,6 +18,7 @@
         </div>
       </div>
     </div>
+    <span id="amount">总计 ¥ {{items[0].isChosen * items[0].price + items[1].isChosen * items[1].price + items[2].isChosen * items[2].price + items[3].isChosen * items[3].price + items[4].isChosen * items[4].price + items[5].isChosen * items[5].price + items[6].isChosen * items[6].price +　items[7].isChosen * items[7].price + items[8].isChosen * items[8].price + items[9].isChosen * items[9].price + items[10].isChosen * items[10].price + items[11].isChosen * items[11].price}}</span>
     <div>
       <button type="button" id = "tableButton1" v-on:click="postData">确认订单</button>
       <button type="button" id = "tableButton2" v-on:click="reset">重置订单</button>
@@ -30,34 +31,34 @@ export default {
   name: 'Food',
   data () {
     return {
-      items: [{foodId: 1, price: 50, isChosen: false, name: '炸鸡块块'},
-        {foodId: 2, price: 100, isChosen: false, name: '香肠鸡腿'},
-        {foodId: 3, price: 20, isChosen: false, name: '炸鸡汉堡'},
-        {foodId: 4, price: 40, isChosen: false, name: '巨无霸'},
-        {foodId: 5, price: 60, isChosen: false, name: '羊肉泡馍'},
-        {foodId: 6, price: 30, isChosen: false, name: '酱骨架'},
-        {foodId: 7, price: 100, isChosen: false, name: '可乐鸡翅'},
-        {foodId: 8, price: 30, isChosen: false, name: '白切鸡'},
-        {foodId: 9, price: 10, isChosen: false, name: '水煮牛肉'},
-        {foodId: 10, price: 10, isChosen: false, name: '鱼香肉丝'},
-        {foodId: 11, price: 10, isChosen: false, name: '清蒸鳜鱼'},
-        {foodId: 12, price: 5, isChosen: false, name: '夫妻肺片'}]
+      items: [{foodId: 1, price: 10, isChosen: false, name: '降龙爪爪', image: require('../assets/jizhua.jpg')},
+        {foodId: 2, price: 10, isChosen: false, name: '香辣鸡腿', image: require('../assets/jitui.jpg')},
+        {foodId: 3, price: 20, isChosen: false, name: '炸鸡汉堡', image: require('../assets/zhajihanbao.jpg')},
+        {foodId: 4, price: 20, isChosen: false, name: '巨无霸', image: require('../assets/juwuba.jpg')},
+        {foodId: 5, price: 20, isChosen: false, name: '羊肉泡馍', image: require('../assets/yangrou.jpg')},
+        {foodId: 6, price: 25, isChosen: false, name: '酱骨架', image: require('../assets/jianggujia.jpg')},
+        {foodId: 7, price: 30, isChosen: false, name: '可乐鸡翅', image: require('../assets/jichi.jpg')},
+        {foodId: 8, price: 30, isChosen: false, name: '白切鸡', image: require('../assets/baiqieji.jpg')},
+        {foodId: 9, price: 30, isChosen: false, name: '水煮牛肉', image: require('../assets/niurou.jpg')},
+        {foodId: 10, price: 20, isChosen: false, name: '鱼香肉丝', image: require('../assets/yuxiang.jpg')},
+        {foodId: 11, price: 35, isChosen: false, name: '清蒸鳜鱼', image: require('../assets/guiyu.jpg')},
+        {foodId: 12, price: 35, isChosen: false, name: '夫妻肺片', image: require('../assets/fuqi.jpg')}]
     }
   },
   methods: {
     postData: function () {
-      var foodList = [{foodId: 1, price: 50, isChosen: this.items[0].isChosen, name: '炸鸡块块'},
-          {foodId: 2, price: 100, isChosen: this.items[1].isChosen, name: '香肠鸡腿'},
+      var foodList = [{foodId: 5, price: 10, isChosen: this.items[0].isChosen, name: '降龙爪爪'},
+          {foodId: 2, price: 10, isChosen: this.items[1].isChosen, name: '香辣鸡腿'},
           {foodId: 3, price: 20, isChosen: this.items[2].isChosen, name: '炸鸡汉堡'},
-          {foodId: 4, price: 40, isChosen: this.items[3].isChosen, name: '巨无霸'},
-          {foodId: 5, price: 60, isChosen: this.items[4].isChosen, name: '羊肉泡馍'},
-          {foodId: 6, price: 30, isChosen: this.items[5].isChosen, name: '酱骨架'},
-          {foodId: 7, price: 100, isChosen: this.items[6].isChosen, name: '可乐鸡翅'},
+          {foodId: 4, price: 20, isChosen: this.items[3].isChosen, name: '巨无霸'},
+          {foodId: 5, price: 20, isChosen: this.items[4].isChosen, name: '羊肉泡馍'},
+          {foodId: 6, price: 25, isChosen: this.items[5].isChosen, name: '酱骨架'},
+          {foodId: 7, price: 30, isChosen: this.items[6].isChosen, name: '可乐鸡翅'},
           {foodId: 8, price: 30, isChosen: this.items[7].isChosen, name: '白切鸡'},
-          {foodId: 9, price: 10, isChosen: this.items[8].isChosen, name: '水煮牛肉'},
+          {foodId: 9, price: 30, isChosen: this.items[8].isChosen, name: '水煮牛肉'},
           {foodId: 10, price: 20, isChosen: this.items[9].isChosen, name: '鱼香肉丝'},
-          {foodId: 11, price: 15, isChosen: this.items[10].isChosen, name: '清蒸鳜鱼'},
-          {foodId: 12, price: 55, isChosen: this.items[11].isChosen, name: '夫妻肺片'}]
+          {foodId: 11, price: 35, isChosen: this.items[10].isChosen, name: '清蒸鳜鱼'},
+          {foodId: 12, price: 35, isChosen: this.items[11].isChosen, name: '夫妻肺片'}]
       console.log(foodList)
       try {
         this.$http.post('http://localhost:8080/#/Food', {
@@ -73,7 +74,6 @@ export default {
         console.log(error)
       }
       alert('预订菜品成功!')
-      this.$router.push('/')
     },
     reset: function () {
       for (var i = 0; i < 12; i++) {
@@ -104,6 +104,19 @@ export default {
   position: relative;
 }
 
+#amount {
+  float: center;
+  position: relative;
+  font-size: 30px;
+  color: red;
+  left: 100px;
+  font-family: Microsoft Yahei;
+  border: 1px solid black;
+  position: relative;
+  border: none;
+  margin-top: 30px;
+}
+
 .select {
   width: 99%;
   height: 50px;
@@ -114,7 +127,6 @@ export default {
   font-size: 28px;
   text-align: center;
   font-family: "Microsoft YaHei";
-  /*border: 5px solid rgba(255, 255, 255, 1);*/
   position: relative;
   outline: none;
   box-shadow: #666 0px 0px 10px;
@@ -143,7 +155,7 @@ export default {
 }
 
 .picture {
-  width: 50%;
+  width: 45%;
   height: 60%;
   position: relative;
 }
@@ -217,8 +229,9 @@ export default {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 12px;
-    margin-left:500px;
+    margin-left:250px;
     box-shadow: #666 0px 0px 5px;
+    margin-top: 15px;
   }
 
   #tableButton2 {
