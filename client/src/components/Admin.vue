@@ -1,12 +1,12 @@
 <!--by Mingyf 2018-05-->
 <template>
 <div id="admin" v-show="showAdmin">
-  <div id="h1_admin" v-html="title"></div>
+  <h1 v-html="title"></h1>
   <div class = "line"> </div>
   <div id = "tablebox">
     <div class="leftbar">
       <div id = "homepageicon">
-        <img id="adminIcon_admin" src="../assets/14.png"  @click="navigateTo({name: 'register'})">
+        <img id="adminIcon" src="../assets/14.png"  @click="navigateTo({name: 'register'})">
       </div>
       <div id = "adminicon">
         <img src="../assets/12.png">
@@ -20,6 +20,7 @@
         <table  class="table">
           <thead>
             <tr>
+              <th class="text-center" style="color:white" v-text = "num"></th>
               <th class="text-center" style="color:white" v-text = "time"></th>
               <th class="text-center" style="color:white" v-text = "tabletyp"></th>
               <th class="text-center" style="color:white" v-text = "phonenum"></th>
@@ -28,7 +29,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr v-for="orderitem in orderitems">
+              <td>{{orderitem.num}}</td>
               <td>{{ orderitem.time }}</td>
               <td>{{ orderitem.tabletype }}</td>
               <td>{{ orderitem.phonenumber  }}</td>
@@ -41,7 +43,7 @@
     </div>
   </div>
   <div id = "bottombar"> </div>
-</div>
+  </div>
 </template>
 
 <script>
@@ -53,6 +55,7 @@ export default {
       title: '所有顾客订单信息',
       admininfo: '管理员：xxx',
       orderList: '订单列表',
+      num: '编号',
       time: '就餐时间',
       tabletyp: '桌型',
       phonenum: '联系人',
@@ -60,22 +63,34 @@ export default {
       operat: '操作',
       showAdmin: true,
       time1: '10:30-13:00',
-      orderitem: [
-        {
-          time: '10:30-13:00',
-          tabletype: '8人',
-          phonenumber: '15521039989',
-          operation: 'delete'
-        }
-      ]
+      data: [],
+      orderitems: []
     }
   },
-  props: [
-    'fromorderpage'
-  ],
+  mounted () {
+    this.OrderInfo()
+    this.test()
+    //  表示在页面打开的时候自动执行这个函数
+  },
   methods: {
     removeOrder: function (index) {
-      this.orderlist.splice(index, 1)
+      alert('are you really want to move it!')
+      var appdata = require('./data.json')
+      this.orderitems = appdata
+
+      $.ajax({
+        url: 'http://127.0.0.1:8081/Data.json',
+        type: 'delete',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: appdata,
+        success: function (msg) {
+        },
+        error: function (xhr, errorType, error) {
+          alert('Ajax request error, errorType: ' + errorType + ', error: ' + error)
+        }
+      })
+      this.OrderInfo()
       //  删除之后应该有一个对顾客的通知，告诉顾客订单信息已经被取消了，
       //  同时还要删除数据库里面关于顾客的订单信息
     },
@@ -85,9 +100,32 @@ export default {
     },
 
     seeMenu: function ($index) {
+      this.orderitems.push(this.order)
+    },
 
+    test: function () {
+      console.log('just a test')
+    },
+
+    OrderInfo: function () {
+      var appdata = require('./data.json')
+      this.orderitems = appdata
+      $.ajax({
+        //  url: 'http://f.apiplus.cn/bj11x5.json',
+        url: 'http://127.0.0.1:8081/Data.json',
+        type: 'GET',
+        dataType: 'JSONP',
+        success: function (data) {
+          //
+          this.orderitems = data
+        },
+        error: function (xhr, errorType, error) {
+          //  alert('Ajax request error, errorType: ' + errorType + ', error: ' + error)
+        }
+      })
     }
   }
+
 }
 </script>
 
@@ -135,7 +173,7 @@ export default {
         background:rgb(000, 188, 212);
     }
 
-    #h1_admin {
+    h1 {
         width:100%;
         height:70px;
         margin-top:50px;
@@ -170,7 +208,7 @@ export default {
         margin-left:2%;
     }
 
-    #adminIcon_admin {
+    #adminIcon {
         margin-right:2%;
         /*float:left;*/
         width:100%;
