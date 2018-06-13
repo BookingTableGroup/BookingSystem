@@ -6,18 +6,16 @@ const {sequelize} = require('./models')
 const config = require('./config/config')
 
 const app = express()
-app.use(morgan('combine'))
+app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 
+require('./passport')
+
 require('./routes')(app)
 
-sequelize.sync({force: true}).then(() => {
-  app.listen(config.port)
-  console.log(`Server starts on port ${config.port}`)
-})
-// var server = app.listen((process.env.PORT || 8081), function () {
-//   var host = server.address().address
-//   var port = server.address().port
-//   console.log('应用启动，地址为 http://%s:%s', host, port)
-// })
+sequelize.sync({force: false})
+  .then(() => {
+    app.listen(config.port)
+    console.log(`Server started on port ${config.port}`)
+  })

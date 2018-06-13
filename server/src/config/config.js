@@ -1,16 +1,18 @@
+const path = require('path')
+
 module.exports = {
-  port: process.env.PROT || 8081,
+  port: process.env.PORT || 8081,
   db: {
-    database: process.env.DB_NAME || 'xifen',
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASS || 'password',
+    database: process.env.DB_NAME || 'tabtracker',
+    user: process.env.DB_USER || 'tabtracker',
+    password: process.env.DB_PASS || 'tabtracker',
     options: {
       dialect: process.env.DIALECT || 'sqlite',
       host: process.env.HOST || 'localhost',
-      storage: './xifen.sqlite'
+      storage: path.resolve(__dirname, '../../xifen.sqlite')
     }
   },
   authentication: {
-    jwtSecret: process.env.JWT_SECret || 'secret'
+    jwtSecret: process.env.JWT_SECRET || 'secret'
   }
 }

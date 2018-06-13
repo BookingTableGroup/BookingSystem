@@ -7,6 +7,7 @@ import Admin from '@/components/Admin'
 import Book from '@/components/Book'
 import Food from '@/components/Food'
 import Home from '@/components/Home'
+import Index from '@/components/Index'
 
 Vue.use(Router)
 
@@ -43,6 +44,11 @@ export default new Router({
       path: '/food',
       name: 'food',
       component: Food
+    },
+    {
+      path: '/index',
+      name: '/index',
+      component: Index
     }
   ]
 })

@@ -3,22 +3,24 @@ const jwt = require('jsonwebtoken')
 const config = require('../config/config')
 
 function jwtSignUser (user) {
-  const ONE_DAY = 60 * 60 * 24
+  const ONE_WEEK = 60 * 60 * 24 * 7
   return jwt.sign(user, config.authentication.jwtSecret, {
-    expiresIn: ONE_DAY
+    expiresIn: ONE_WEEK
   })
 }
 
-// 控制服务器的路由
 module.exports = {
   async register (req, res) {
     try {
       const user = await User.create(req.body)
-      res.send(user.toJSON())
+      const userJson = user.toJSON()
+      res.send({
+        user: userJson,
+        token: jwtSignUser(userJson)
+      })
     } catch (err) {
-      // 已经存在该邮箱地址的情况
       res.status(400).send({
-        error: '邮箱已经被登记'
+        error: 'This email account is already in use.'
       })
     }
   },
@@ -30,25 +32,28 @@ module.exports = {
           email: email
         }
       })
+
       if (!user) {
         return res.status(403).send({
-          error: '没有该用户'
+          error: 'The login information was incorrect'
         })
       }
+
       const isPasswordValid = await user.comparePassword(password)
       if (!isPasswordValid) {
         return res.status(403).send({
-          error: '密码错误'
+          error: 'The login information was incorrect'
         })
       }
+
       const userJson = user.toJSON()
       res.send({
         user: userJson,
         token: jwtSignUser(userJson)
       })
     } catch (err) {
-      return res.status(500).send({
-        error: '登录时信息出错'
+      res.status(500).send({
+        error: 'An error has occured trying to log in'
       })
     }
   }

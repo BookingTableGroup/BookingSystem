@@ -1,35 +1,56 @@
 <template>
-  <v-toolbar fixed  class="cyan" dark>
+  <v-toolbar fixed class="cyan" dark>
     <v-toolbar-title class="mr-4">
-      <span
+      <router-link 
         class="home"
-        @click="navigateTo({name: 'root'})">
-        主页←
-      </span>
+        tag="span"
+        :to="{
+          name: 'songs'
+        }">
+        主页
+      </router-link>
     </v-toolbar-title>
 
-    <!-- TODO: Implement Me -->
-    <!-- <v-toolbar-items>
-      <v-btn flat dark>
-        Browse
+    <v-toolbar-items>
+      <v-btn 
+        flat 
+        dark
+        :to="{
+          name: 'songs'
+        }">
+        查看主页
       </v-btn>
-    </v-toolbar-items> -->
+    </v-toolbar-items>
 
     <v-spacer></v-spacer>
 
     <v-toolbar-items>
-      <v-btn
-        flat
+      <v-btn 
+        v-if="!$store.state.isUserLoggedIn"
+        flat 
         dark
-        @click="navigateTo({name: 'login'})">
+        :to="{
+          name: 'login'
+        }">
         登录
       </v-btn>
-
-      <v-btn
-        flat
+      
+      <v-btn 
+        v-if="!$store.state.isUserLoggedIn"
+        flat 
         dark
-        @click="navigateTo({name: 'register'})">
+        :to="{
+          name: 'register'
+        }">
         注册
+      </v-btn>
+      
+      <v-btn 
+        v-if="$store.state.isUserLoggedIn"
+        flat 
+        dark
+        @click="logout">
+        登出
       </v-btn>
     </v-toolbar-items>
   </v-toolbar>
@@ -38,8 +59,12 @@
 <script>
 export default {
   methods: {
-    navigateTo (route) {
-      this.$router.push(route)
+    logout () {
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      this.$router.push({
+        name: '/'
+      })
     }
   }
 }
@@ -49,6 +74,7 @@ export default {
 .home {
   cursor: pointer;
 }
+
 .home:hover {
   color: #E9E;
 }

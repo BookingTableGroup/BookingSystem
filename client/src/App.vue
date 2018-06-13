@@ -2,7 +2,7 @@
   <div id="app">
     <v-app>
       <page-header />
-
+      
       <main>
         <v-container fluid>
           <router-view></router-view>
@@ -33,7 +33,7 @@ export default {
   margin-top: 60px;
 }
 
-* {
-  margin: 0;
+.danger-alert {
+  color: red;
 }
 </style>
