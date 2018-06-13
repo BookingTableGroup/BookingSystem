@@ -161,34 +161,35 @@
 </script>
 
 <style>
-    #topInfo_home {
+    #topInfo {
         background-color: rgb(000, 188, 212);
         height:130px;
         box-shadow: #666 0px 0px 5px
     }
-    #h1_home {
+    h1 {
         color:white;
-        font-size:55px;
-        padding-top:20px;
-        padding-left: 100px;
-        width:50%;
-        font-weight:normal;
+        font-size:400%;
+        text-align: left;
+        padding-top:3%;
+        padding-left:2%;
+        width:80%;
+        height:80%;
     }
-    #user_home {
+    #user {
         margin-left:50%;
         width: 40%;
         margin-top:-95px;
     }
-    #user_home p {
+    #user p {
         width: 80px;
         text-align:right;
-        margin-top:10px;
-        margin-left: 85%;
+        margin-top:1%;
+        margin-left: 75%;
         float: left;
         color: white;
         font-size: 16px;
     }
-    .userIcon_home {
+    .userIcon {
         width:7%;
         height:7%;
         margin-bottom : -9px;
@@ -198,48 +199,45 @@
         height:32px;
         font-size: 17px;
     }
-    #admin_home {
-        width: 9%;
-        margin-left:91%;
-        margin-top: -115px;
+    #admin {
+        width: 15%;
+        margin-left:87%;
     }
 
-    #adminIcon_home {
-        height: 75px;
-        width:80px;
+    #adminIcon {
+        height:45%;
+        width:45%;
     }
-    #admin_home p {
+    #admin p {
         color:white;
         margin-top: -5px;
         padding-left: 18px;
-        font-size:20px;
+        font-size:100%;
     }
-    #userInfo_home {
+    #userInfo {
         height: 120px;
         margin-left: 89%;
         margin-top: -120px;
     }
-    #userInfo_home p {
+    #userInfo p {
         float: left;
         width: 78%;
         top: 14px;
         font-size: 20px;
         color:#FAD59D;
     }
-    #userInfo_home img {
+    #userInfo img {
         width: 20%;
         height: 20%;
         top: -150px;
     }
     /*photo-list*/
-    #line_home {
-        margin-top:0.5%;
-        width:100%;
-        height:1%;
-        border:solid 2px rgb(000, 188, 212);
-        background:rgb(000, 188, 212);
+    hr {
+        margin-top:3px;
+        border: 2px solid rgb(000, 188, 212);
     }
-    #photo-list_home {
+
+    #photo-list {
         margin-left: 58px;
         margin-right: 58px;
         height: 155px;
@@ -253,21 +251,21 @@
         list-style: none;
         width: 20%;
     }
-    #left_home,#right_home {
+    #left,#right {
         padding-top: 50px;
         width: 40px;
         height:90px;
         
     }
-    #left_home {
+    #left {
         float: left;
         padding-left:2px;
     }
-    #right_home {
+    #right {
         margin-top: -155px;
         float: right;
     }
-    .pic_home {
+    .pic {
         margin-top:2px;
         width: 80%;
         height: 153px;
@@ -277,8 +275,8 @@
         box-shadow: #666 0px 0px 10px;
     }
 
-    #menu_home {
-        height: 300px;
+    #menu_1 {
+        height: 280px;
         box-shadow: #666 0px 0px 10px;
     }
     #homePage #homeBottom {
@@ -289,53 +287,43 @@
         float:left;
         width:33.3%;
     }
-    .selection_home {
-        margin-top:15px;
-        margin-left:250px;
-        width: 15%;
+    .selection {
+        margin-top:3%;
+        margin-left:7%;
+        height:20%;
+        width: 25%;
         float: left;
-        
     }
-    .ellipse_home {
-        width: 70%;
-        height: 180px;
-        margin-top: 10px;
-        margin-left: 18%;
+    .ellipse {
+        width: 80%;
+        height: 250%;
+        margin-top: 0%;
+        margin-left: 11%;
         margin-bottom: 16px;
         border: 4px solid rgb(000, 188, 212);
         border-radius: 50%;
-
     }
-    .ellipse_home img {
+    .ellipse img {
         width: 80%;
         margin-left: 4%;
         margin-top:16px;
         height:80%;
         vertical-align: center;
     }
-    #menu__home {
+    #menu_1 .btn {
         background-color:rgb(000, 188, 212);
         color:white;
         border-radius: 10px;
-        width: 70%;
-        height:35px;
+        width: 100%;
+        height:55%;
         font-size:18px;
-        margin-left:10%;
-    }
-    #btn_home {
-        background-color:rgb(000, 188, 212);
-        color:white;
-        border-radius: 10px;
-        width: 70%;
-        height:35px;
-        font-size:18px;
-        margin-left:10%;
+        margin-left:0%;
     }
     #homeBottom .homeBottomInfo img {
       width: 40px;
       height: 40px;
     }
-    .bottomInfo_home {
+    .bottomInfo {
       color:white;
       text-align:center;
       padding-top:5px;
