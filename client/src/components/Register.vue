@@ -6,12 +6,12 @@
           name="tab-tracker-form"
           autocomplete="off">
           <v-text-field
-            label="Email"
+            label="手机"
             v-model="email"
           ></v-text-field>
           <br>
           <v-text-field
-            label="Password"
+            label="密码"
             type="password"
             v-model="password"
             autocomplete="new-password"

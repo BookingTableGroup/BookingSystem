@@ -3,12 +3,12 @@
     <v-flex xs6 offset-xs3 id="boxx">
       <panel title="登录">
         <v-text-field
-          label="Email"
+          label="手机"
           v-model="email"
         ></v-text-field>
         <br>
         <v-text-field
-          label="Password"
+          label="密码"
           type="password"
           v-model="password"
         ></v-text-field>
