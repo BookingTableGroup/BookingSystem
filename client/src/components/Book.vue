@@ -84,6 +84,7 @@ export default {
   methods: {
     postData: function (event) {
       alert('谢谢！您预订了： ' + this.picked + '人桌☺' + '时间:' + this.selected + '☺')
+      this.$router.push('/')
       this.$http.post('http://localhost:8088/query', {
         'tableTpye': this.picked,
         'tableTime': this.selected

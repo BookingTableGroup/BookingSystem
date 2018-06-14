@@ -6,7 +6,6 @@
         <div id="topInfo_home">
             <div id="h1_home" v-text="title"></div>
             <div id="user_home" v-show="beforeLogin">
-              <p v-text="loginFirst"></p>
             </div>
             <div id="admin_home" v-show="beforeLogin">
                 <a></a>
@@ -83,7 +82,6 @@
         title: '餐厅预订系统',
         admin: '管理员',
         login: '登录',
-        loginFirst: '请先登录',
         register: '注册',
         time: '开放时间：8:00-22:00',
         manager: '经理：XXX',

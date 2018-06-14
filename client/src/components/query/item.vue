@@ -15,10 +15,12 @@ export default {
 <style>
 
   #foodList{
+    margin-top: 5px;
     margin-left: 100px;
     float: left;
     width: 300px;
-    border: 3px groove white;
+    border:  3px solid rgb(000, 188, 212);
+    box-shadow: #666 0px 0px 5px;
   }
 
   #itemName, #itemPrice{
@@ -27,9 +29,9 @@ export default {
     padding-top: 10px;
     padding-bottom: 10px;
     color: rgba(102, 93, 102, 1);
-    font-size: 20px;
+    font-size: 22.98px;
     font-family: Roboto;
-    border: 3px solid rgba(255, 255, 255, 1);
+    /*border: 3px solid rgba(255, 255, 255, 1);*/
   }
 
   #deleteIcon {
