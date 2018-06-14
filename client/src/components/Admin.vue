@@ -1,12 +1,12 @@
 <!--by Mingyf 2018-05-->
 <template>
-<div id="admin" v-show="showAdmin">
-  <h1 v-html="title"></h1>
+<div class="admin" v-show="showAdmin">
+  <div class = "admin_h1" v-html="title"></div>
   <div class = "line"> </div>
   <div id = "tablebox">
-    <div class="leftbar">
-      <div id = "homepageicon">
-        <img id="adminIcon" src="../assets/14.png"  @click="navigateTo({name: 'register'})">
+    <div class="leftbar">s
+      <div id = "homepageicon" @click="goHome($index)">
+        <img id="adminIcon" src="../assets/14.png">
       </div>
       <div id = "adminicon">
         <img src="../assets/12.png">
@@ -53,7 +53,7 @@ export default {
   data: function () {
     return {
       title: '所有顾客订单信息',
-      admininfo: '管理员：xxx',
+      admininfo: '管理员：小明',
       orderList: '订单列表',
       num: '编号',
       time: '就餐时间',
@@ -67,29 +67,29 @@ export default {
       orderitems: [
         {
           num: '订单1',
-          time: '2018-06-31/10:30-13:00',
-          tabletype: '8人',
-          phonenumber: '15521039989',
+          time: '11:00-14:00',
+          tabletype: '8人桌',
+          phonenumber: '13321037989',
           operation: 'delete'
         },
         {
           num: '订单2',
-          time: '2018-06-31/10:30-13:00',
-          tabletype: '9人',
-          phonenumber: '15521039989',
+          time: '11:00-14:00',
+          tabletype: '１0人桌',
+          phonenumber: '15521030989',
           operation: 'delete'
         },
         {
           num: '订单3',
-          time: '2018-07-01/10:30-13:00',
-          tabletype: '14人',
+          time: '17:00-21:00',
+          tabletype: '16人桌',
           phonenumber: '15521039989',
           operation: 'delete'
         },
         {
           num: '订单4',
-          time: '2018-07-04/10:30-13:00',
-          tabletype: '18人',
+          time: '17:00-21:00',
+          tabletype: '1６人桌',
           phonenumber: '15521035989',
           operation: 'delete'
         }
@@ -102,16 +102,12 @@ export default {
       this.orderitems.splice(index, 1)
     },
 
-    navigateTo (route) {
-      this.$router.push(route)
-    },
-
     seeMenu: function ($index) {
       this.$router.push('/query')
     },
 
-    test: function () {
-      console.log('just a test')
+    goHome: function ($index) {
+      this.$router.push('/')
     }
   }
 
@@ -119,31 +115,17 @@ export default {
 </script>
 
 <style>
-    #space {
-      margin-top:10px;
-      float: right;
-      height: 20px;
-      width: 80%;
-      /* border: 2px solid rgb(110, 86, 7); */
+
+    .admin {
+      margin-top:-7%;
     }
-    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        margin-left:auto;
-        margin-right:auto;
-        width:100%;
-        height:100%;
-        padding:0px;
-        margin-top:0px;
-    }
+
     #word {
       margin-right:20%;
       /*color: rgb(110, 86, 7);*/
       font-size: 20px;
       font-family: Roboto;
-      color:white
+      color:white；
     }
 
     #word2 {
@@ -162,7 +144,7 @@ export default {
         background:rgb(000, 188, 212);
     }
 
-    h1 {
+    .admin_h1 {
         width:100%;
         height:70px;
         margin-top:50px;
@@ -172,7 +154,7 @@ export default {
         font-size:30px;
         /*box-shadow: #666 0px 0px 10px;*/
     }
-
+ 
     #tablebox {
         width:100%;
         height:500px;
@@ -260,7 +242,7 @@ export default {
         height:90%;
         overflow-y:scroll;
         /*border: 0px solid rgb(000, 188, 212);*/
-
+        
     }
 
     .table {
