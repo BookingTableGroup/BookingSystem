@@ -4,7 +4,7 @@
   <div class = "admin_h1" v-html="title"></div>
   <div class = "line"> </div>
   <div id = "tablebox">
-    <div class="leftbar">s
+    <div class="leftbar">
       <div id = "homepageicon" @click="goHome($index)">
         <img id="adminIcon" src="../assets/14.png">
       </div>
@@ -117,7 +117,7 @@ export default {
 <style>
 
     .admin {
-      margin-top:-7%;
+      margin-top:-3%;
     }
 
     #word {
