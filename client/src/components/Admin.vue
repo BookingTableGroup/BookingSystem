@@ -69,7 +69,7 @@ export default {
           num: '订单1',
           time: '11:00-14:00',
           tabletype: '8人桌',
-          phonenumber: '13321037989',
+          phonenumber: '13333333333',
           operation: 'delete'
         },
         {
@@ -83,14 +83,14 @@ export default {
           num: '订单3',
           time: '17:00-21:00',
           tabletype: '16人桌',
-          phonenumber: '15521039989',
+          phonenumber: '15512345678',
           operation: 'delete'
         },
         {
           num: '订单4',
           time: '17:00-21:00',
           tabletype: '1６人桌',
-          phonenumber: '15521035989',
+          phonenumber: '13650000000',
           operation: 'delete'
         }
       ]

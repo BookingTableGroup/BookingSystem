@@ -35,11 +35,11 @@ export default {
       tableTime: '11:00-14:00',
       userId: '12345678901',
       items: [
-        {name: '糖醋排骨', price: 50},
-        {name: '红烧肉', price: 50},
-        {name: '麻婆豆腐', price: 20},
-        {name: '鱼香肉丝', price: 30},
-        {name: '小鸡炖蘑菇', price: 60}
+        {name: '降龙爪爪', price: 10},
+        {name: '香辣鸡腿', price: 10},
+        {name: '炸鸡汉堡', price: 20},
+        {name: '巨无霸', price: 20},
+        {name: '羊肉泡馍', price: 20}
       ]
     }
   }

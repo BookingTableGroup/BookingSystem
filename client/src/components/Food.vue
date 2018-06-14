@@ -74,6 +74,7 @@ export default {
         console.log(error)
       }
       alert('预订菜品成功!')
+      this.$router.push('/')
     },
     reset: function () {
       for (var i = 0; i < 12; i++) {
