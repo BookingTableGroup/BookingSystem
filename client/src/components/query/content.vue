@@ -56,8 +56,8 @@ export default {
     height: 400px;
     width: 20%;
   }
-  #curOrder, #hisOrder {
-    margin-left: -25px;
+  #curOrder {
+    float: left;
     height: 40px;
     width: 60%;
     background-color: rgb(000, 188, 212);
@@ -68,8 +68,15 @@ export default {
     margin-top: 40px;
   }
   #hisOrder {
-    margin-top: 10px;
+    float: left;
+    height: 40px;
+    width: 60%;
     background-color: rgb(000, 188, 212);
+    color: white;
+    font-size: 25px;
+    font-family: Roboto;
+    box-shadow: #666 0px 0px 5px;
+    margin-top: 40px;
   }
   #tableInfo {
     margin-top: 40px;
@@ -118,8 +125,9 @@ export default {
   #tablePhone {
     margin-top: 100px;
     margin-left: 60%;
-    height: 120px;
+
     color:black;
+    font-size: 20px;
   }
   #foodTitle {
     height: 30px;
@@ -134,7 +142,7 @@ export default {
     margin-left:60%;
     height: 400px;
     width: 40%;
-    color:red
+    color:red;
   }
   #menu {
     float: left;
