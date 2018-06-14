@@ -112,11 +112,6 @@ export default {
 
     test: function () {
       console.log('just a test')
-    },
-
-    OrderInfo: function () {
-      var appdata = require('./data.json')
-      this.orderitems = appdata
     }
   }
 
