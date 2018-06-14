@@ -64,35 +64,42 @@ export default {
       showAdmin: true,
       time1: '10:30-13:00',
       data: [],
-      orderitems: []
+      orderitems: [
+        {
+          num: '订单1',
+          time: '2018-06-31/10:30-13:00',
+          tabletype: '8人',
+          phonenumber: '15521039989',
+          operation: 'delete'
+        },
+        {
+          num: '订单2',
+          time: '2018-06-31/10:30-13:00',
+          tabletype: '9人',
+          phonenumber: '15521039989',
+          operation: 'delete'
+        },
+        {
+          num: '订单3',
+          time: '2018-07-01/10:30-13:00',
+          tabletype: '14人',
+          phonenumber: '15521039989',
+          operation: 'delete'
+        },
+        {
+          num: '订单4',
+          time: '2018-07-04/10:30-13:00',
+          tabletype: '18人',
+          phonenumber: '15521035989',
+          operation: 'delete'
+        }
+      ]
     }
-  },
-  mounted () {
-    this.OrderInfo()
-    this.test()
-    //  表示在页面打开的时候自动执行这个函数
   },
   methods: {
     removeOrder: function (index) {
-      alert('are you really want to move it!')
-      var appdata = require('./data.json')
-      this.orderitems = appdata
-
-      $.ajax({
-        url: 'http://127.0.0.1:8081/Data.json',
-        type: 'delete',
-        contentType: 'application/json',
-        dataType: 'json',
-        data: appdata,
-        success: function (msg) {
-        },
-        error: function (xhr, errorType, error) {
-          alert('Ajax request error, errorType: ' + errorType + ', error: ' + error)
-        }
-      })
-      this.OrderInfo()
-      //  删除之后应该有一个对顾客的通知，告诉顾客订单信息已经被取消了，
-      //  同时还要删除数据库里面关于顾客的订单信息
+      alert('删除之后无法恢复，确认要删除吗？')
+      this.orderitems.splice(index, 1)
     },
 
     navigateTo (route) {
@@ -110,19 +117,6 @@ export default {
     OrderInfo: function () {
       var appdata = require('./data.json')
       this.orderitems = appdata
-      $.ajax({
-        //  url: 'http://f.apiplus.cn/bj11x5.json',
-        url: 'http://127.0.0.1:8081/Data.json',
-        type: 'GET',
-        dataType: 'JSONP',
-        success: function (data) {
-          //
-          this.orderitems = data
-        },
-        error: function (xhr, errorType, error) {
-          //  alert('Ajax request error, errorType: ' + errorType + ', error: ' + error)
-        }
-      })
     }
   }
 
