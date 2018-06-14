@@ -20,7 +20,7 @@
     </div>
     <div>
       <button type="button" id = "tableButton1" v-on:click="postData">确认订单</button>
-      <button type="button" id = "tableButton2" v-on:click="reset">取消订单</button>
+      <button type="button" id = "tableButton2" v-on:click="reset">重置订单</button>
     </div>
   </div>
 </template>
@@ -46,19 +46,18 @@ export default {
   },
   methods: {
     postData: function () {
-      var d = document.getElementsByClassName('dish')
-      var foodList = [{foodId: 1, price: 50, isChosen: d[0].getElementsByClassName('check')[0].checked, name: '炸鸡块块'},
-            {foodId: 2, price: 100, isChosen: d[1].getElementsByClassName('check')[0].checked, name: '香肠鸡腿'},
-            {foodId: 3, price: 20, isChosen: d[2].getElementsByClassName('check')[0].checked, name: '炸鸡汉堡'},
-            {foodId: 4, price: 40, isChosen: d[3].getElementsByClassName('check')[0].checked, name: '巨无霸'},
-            {foodId: 5, price: 60, isChosen: d[4].getElementsByClassName('check')[0].checked, name: '羊肉泡馍'},
-            {foodId: 6, price: 30, isChosen: d[5].getElementsByClassName('check')[0].checked, name: '酱骨架'},
-            {foodId: 7, price: 100, isChosen: d[6].getElementsByClassName('check')[0].checked, name: '可乐鸡翅'},
-            {foodId: 8, price: 30, isChosen: d[7].getElementsByClassName('check')[0].checked, name: '白切鸡'},
-            {foodId: 9, price: 10, isChosen: d[8].getElementsByClassName('check')[0].checked, name: '水煮牛肉'},
-            {foodId: 10, price: 20, isChosen: d[9].getElementsByClassName('check')[0].checked, name: '鱼香肉丝'},
-            {foodId: 11, price: 15, isChosen: d[10].getElementsByClassName('check')[0].checked, name: '清蒸鳜鱼'},
-            {foodId: 12, price: 55, isChosen: d[11].getElementsByClassName('check')[0].checked, name: '夫妻肺片'}]
+      var foodList = [{foodId: 1, price: 50, isChosen: this.items[0].isChosen, name: '炸鸡块块'},
+          {foodId: 2, price: 100, isChosen: this.items[1].isChosen, name: '香肠鸡腿'},
+          {foodId: 3, price: 20, isChosen: this.items[2].isChosen, name: '炸鸡汉堡'},
+          {foodId: 4, price: 40, isChosen: this.items[3].isChosen, name: '巨无霸'},
+          {foodId: 5, price: 60, isChosen: this.items[4].isChosen, name: '羊肉泡馍'},
+          {foodId: 6, price: 30, isChosen: this.items[5].isChosen, name: '酱骨架'},
+          {foodId: 7, price: 100, isChosen: this.items[6].isChosen, name: '可乐鸡翅'},
+          {foodId: 8, price: 30, isChosen: this.items[7].isChosen, name: '白切鸡'},
+          {foodId: 9, price: 10, isChosen: this.items[8].isChosen, name: '水煮牛肉'},
+          {foodId: 10, price: 20, isChosen: this.items[9].isChosen, name: '鱼香肉丝'},
+          {foodId: 11, price: 15, isChosen: this.items[10].isChosen, name: '清蒸鳜鱼'},
+          {foodId: 12, price: 55, isChosen: this.items[11].isChosen, name: '夫妻肺片'}]
       console.log(foodList)
       try {
         this.$http.post('http://localhost:8080/#/Food', {
@@ -73,11 +72,11 @@ export default {
       } catch (error) {
         console.log(error)
       }
+      alert('预订菜品成功!')
     },
     reset: function () {
-      var d = document.getElementsByClassName('dish')
       for (var i = 0; i < 12; i++) {
-        d[i].getElementsByClassName('check')[0].checked = false
+        this.items[i].isChosen = false
       }
     }
   }
