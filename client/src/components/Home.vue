@@ -4,7 +4,7 @@
     <div id="homePage" v-show="showHome">
         <!--top information:including the title and userInfo-->
         <div id="topInfo_home">
-            <h1 id="h1_home" v-text="title"></h1>
+            <div id="h1_home" v-text="title"></div>
             <div id="user_home" v-show="beforeLogin">
               <p v-text="loginFirst"></p>
             </div>

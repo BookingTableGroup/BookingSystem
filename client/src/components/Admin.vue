@@ -107,7 +107,7 @@ export default {
     },
 
     seeMenu: function ($index) {
-      this.orderitems.push(this.order)
+      this.$router.push('/query')
     },
 
     test: function () {
