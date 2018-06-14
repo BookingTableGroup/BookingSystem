@@ -1,53 +1,50 @@
 <template>
   <v-toolbar fixed class="cyan" dark>
-    <v-toolbar-title class="mr-4">
-      <router-link 
+      <v-toolbar-title class="mr-4">
+      <span
         class="home"
-        tag="span"
-        :to="{
-          name: 'songs'
-        }">
+        @click="navigateTo({name: 'root'})">
         主页
-      </router-link>
+      </span>
     </v-toolbar-title>
 
-    <v-toolbar-items>
-      <v-btn 
-        flat 
+    <!-- <v-toolbar-items>
+      <v-btn
+        flat
         dark
         :to="{
           name: 'songs'
         }">
         查看主页
       </v-btn>
-    </v-toolbar-items>
+    </v-toolbar-items> -->
 
     <v-spacer></v-spacer>
 
     <v-toolbar-items>
-      <v-btn 
+      <v-btn
         v-if="!$store.state.isUserLoggedIn"
-        flat 
+        flat
         dark
         :to="{
           name: 'login'
         }">
         登录
       </v-btn>
-      
-      <v-btn 
+
+      <v-btn
         v-if="!$store.state.isUserLoggedIn"
-        flat 
+        flat
         dark
         :to="{
           name: 'register'
         }">
         注册
       </v-btn>
-      
-      <v-btn 
+
+      <v-btn
         v-if="$store.state.isUserLoggedIn"
-        flat 
+        flat
         dark
         @click="logout">
         登出
@@ -65,7 +62,11 @@ export default {
       this.$router.push({
         name: '/'
       })
+    },
+    navigateTo (route) {
+      this.$router.push(route)
     }
+
   }
 }
 </script>

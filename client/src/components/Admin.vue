@@ -112,11 +112,6 @@ export default {
 
     test: function () {
       console.log('just a test')
-    },
-
-    OrderInfo: function () {
-      var appdata = require('./data.json')
-      this.orderitems = appdata
     }
   }
 
@@ -177,7 +172,7 @@ export default {
         font-size:30px;
         /*box-shadow: #666 0px 0px 10px;*/
     }
- 
+
     #tablebox {
         width:100%;
         height:500px;
@@ -265,7 +260,7 @@ export default {
         height:90%;
         overflow-y:scroll;
         /*border: 0px solid rgb(000, 188, 212);*/
-        
+
     }
 
     .table {
