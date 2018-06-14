@@ -4,7 +4,7 @@
     <div id="homePage" v-show="showHome">
         <!--top information:including the title and userInfo-->
         <div id="topInfo_home">
-            <div id="h1_home" v-text="title"></div>
+            <h1 id="h1_home" v-text="title"></h1>
             <div id="user_home" v-show="beforeLogin">
               <p v-text="loginFirst"></p>
             </div>
@@ -161,12 +161,12 @@
 </script>
 
 <style>
-    #topInfo {
+    #topInfo_home {
         background-color: rgb(000, 188, 212);
         height:130px;
         box-shadow: #666 0px 0px 5px
     }
-    h1 {
+    #h1_home {
         color:white;
         font-size:400%;
         text-align: left;
@@ -175,12 +175,13 @@
         width:80%;
         height:80%;
     }
-    #user {
+    #user_home {
         margin-left:50%;
         width: 40%;
         margin-top:-95px;
     }
-    #user p {
+
+    #user_home p {
         width: 80px;
         text-align:right;
         margin-top:1%;
@@ -189,7 +190,7 @@
         color: white;
         font-size: 16px;
     }
-    .userIcon {
+    .userIcon_home {
         width:7%;
         height:7%;
         margin-bottom : -9px;
@@ -199,45 +200,49 @@
         height:32px;
         font-size: 17px;
     }
-    #admin {
+    #admin_home {
         width: 15%;
-        margin-left:87%;
+        margin-left:85%;
     }
 
-    #adminIcon {
+    #adminIcon_home {
         height:45%;
         width:45%;
+        margin-top:-40px;
     }
-    #admin p {
+
+    #admin_home p {
         color:white;
         margin-top: -5px;
         padding-left: 18px;
         font-size:100%;
     }
-    #userInfo {
+    #userInfo_home {
         height: 120px;
         margin-left: 89%;
         margin-top: -120px;
     }
-    #userInfo p {
+    #userInfo_home p {
         float: left;
         width: 78%;
         top: 14px;
         font-size: 20px;
         color:#FAD59D;
     }
-    #userInfo img {
+    #userInfo_home img {
         width: 20%;
         height: 20%;
         top: -150px;
     }
     /*photo-list*/
-    hr {
-        margin-top:3px;
-        border: 2px solid rgb(000, 188, 212);
+    #line_home {
+        margin-top:0.5%;
+        width:100%;
+        height:1%;
+        border:solid 2px rgb(000, 188, 212);
+        background:rgb(000, 188, 212);
     }
-
-    #photo-list {
+    #photo-list_home {
         margin-left: 58px;
         margin-right: 58px;
         height: 155px;
@@ -251,21 +256,21 @@
         list-style: none;
         width: 20%;
     }
-    #left,#right {
+    #left_home,#right_home {
         padding-top: 50px;
         width: 40px;
         height:90px;
         
     }
-    #left {
+    #left_home {
         float: left;
         padding-left:2px;
     }
-    #right {
+    #right_home {
         margin-top: -155px;
         float: right;
     }
-    .pic {
+    .pic_home {
         margin-top:2px;
         width: 80%;
         height: 153px;
@@ -275,8 +280,8 @@
         box-shadow: #666 0px 0px 10px;
     }
 
-    #menu_1 {
-        height: 280px;
+    #menu_home {
+        height: 300px;
         box-shadow: #666 0px 0px 10px;
     }
     #homePage #homeBottom {
@@ -287,14 +292,14 @@
         float:left;
         width:33.3%;
     }
-    .selection {
+    .selection_home {
         margin-top:3%;
         margin-left:7%;
         height:20%;
         width: 25%;
         float: left;
     }
-    .ellipse {
+    .ellipse_home {
         width: 80%;
         height: 250%;
         margin-top: 0%;
@@ -302,15 +307,25 @@
         margin-bottom: 16px;
         border: 4px solid rgb(000, 188, 212);
         border-radius: 50%;
+
     }
-    .ellipse img {
+    .ellipse_home img {
         width: 80%;
         margin-left: 4%;
         margin-top:16px;
         height:80%;
         vertical-align: center;
     }
-    #menu_1 .btn {
+    #menu__home {
+        background-color:rgb(000, 188, 212);
+        color:white;
+        border-radius: 10px;
+        width: 70%;
+        height:35px;
+        font-size:18px;
+        margin-left:10%;
+    }
+    #btn_home {
         background-color:rgb(000, 188, 212);
         color:white;
         border-radius: 10px;
@@ -323,7 +338,7 @@
       width: 40px;
       height: 40px;
     }
-    .bottomInfo {
+    .bottomInfo_home {
       color:white;
       text-align:center;
       padding-top:5px;
