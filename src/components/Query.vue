@@ -12,17 +12,21 @@
           <div id="foodTitle">餐桌信息</div>
           <div id="tableMem">
             <img id="table8" src="../assets/8.png">
-            <p id="tableId">{{table}} 人桌</p>
-            <p id="tableTime">用餐时间：{{time}}</p>
+            <p id="tableId">{{tableData.table}} 人桌</p>
+            <p id="tableTime">用餐时间：{{tableData.time}}</p>
           </div>
-          <p id="tablePhone">联系电话： {{phone}}</p>
+          <p id="tablePhone">联系电话： {{tableData.phone}}</p>
         </div>
         <div id="foodInfo">
           <div class="foodList">
-              <div v-for="item in items" :key="item.id">
-                <item>
-                </item>
-              </div>
+            <el-table :data="tableData.foods">
+              <el-table-column
+                v-for="{ prop, label } in colConfigs"
+                :key="prop"
+                :prop="prop"
+                :label="label">
+              </el-table-column>
+            </el-table>
             <div class="totalPrice">
               总价：{{total}}
             </div>
@@ -35,17 +39,47 @@
 </template>
 
 <script>
-  import item from './item.vue'
+import item from './item.vue'
 export default {
   components: {
     item
   },
   data () {
+    this.colConfigs = [
+      { prop: 'price', label: '价格' },
+      { prop: 'name', label: '菜名' }
+    ]
     return {
-      table: "",
-      time: "",
-      phone
+      total: 0,
+      tableData: [],
+      loading: false
     }
+  },
+  methods: {
+    getAll: function () {
+      this.loading = true;
+      let phone = localStorage.getItem('user');
+      this.$http.post("/api/getFood",{phone}).then(
+        function(response) {
+          this.loading = false;
+          this.tableData = response.body;
+          this.computeTotal();
+        },
+        function() {
+          this.loading = false;
+          console.log("error");
+        }
+      );
+    },
+    computeTotal: function () {
+       for (let index = 0; index <  this.tableData[0].foods.length; index++) {
+        this.total = this.tableData[0].foods[index].price + this.total;
+      }
+    }
+  },
+    //页面初始化进来查询数据
+  mounted: function() {
+    this.getAll();
   }
 }
 </script>
