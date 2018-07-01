@@ -281,4 +281,23 @@ export default {
     margin-top: 5px;
     width: 12%;
   }
+
+  #star1{
+    float: right;
+    margin-left: 35px;
+    margin-top: 10px;
+    width: 14%;
+  }
+  #star2{
+    float: right;
+    margin-left: 12px;
+    margin-top: 6px;
+    width: 15%;
+  }
+  #star3{
+    float: right;
+    margin-left: 35px;
+    margin-top: 4px;
+    width: 15%;
+  }
 </style>
