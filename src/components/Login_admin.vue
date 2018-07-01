@@ -84,6 +84,12 @@
 
       cancel(){
         this.$router.push('/');
+      },
+      yes(){
+        this.$router.push('/home');
+      },
+      no(){
+        this.$router.push('/');
       }
     }
   }
