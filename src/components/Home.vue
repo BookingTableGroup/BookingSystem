@@ -3,7 +3,7 @@
 <template>
     <div id="homePage" v-show="showHome">
         <el-menu theme="dark" :default-active="activeIndex" class="el-menu-home" mode="horizontal">
-            <el-menu-item index="1"><router-link to="/"><p id="topInfo_home">主页</p></router-link></el-menu-item>
+            <el-menu-item index="1"><router-link to="/home"><p id="topInfo_home">主页</p></router-link></el-menu-item>
             <el-menu-item index="2" :style="{float: 'right'}">
                 <router-link v-show="!user.phone" to="/">登录</router-link>
                 <el-dropdown @command="loginOut">
@@ -42,33 +42,14 @@
 
             <div class="selection_home">
                 <div class="ellipse_home">
-                    <img src="../assets/table.png">
-                </div>
-                <button v-text="bookTable" id="btn_home" @click="goBook"></button>
-            </div>
-            <div class="selection_home">
-                <div class="ellipse_home">
                     <img src="../assets/food.png">
                 </div>
-                <button v-text="bookFood" id="btn_home" @click="goFood"></button>
+                <button v-text="bookTable" id="btn_home" @click="goBook"></button>
             </div>
         </div>
         <br/>
         <!--bottom information-->
-        <div id="homeBottom">
-            <div class="homeBottomInfo">
-                <img src="../assets/time.png">
-                <p v-text="time" class="bottomInfo_home"></p>
-            </div>
-            <div class="homeBottomInfo">
-                <img src="../assets/user.png">
-                <p v-text="manager" class="bottomInfo_home"></p>
-            </div>
-            <div class="homeBottomInfo">
-                <img src="../assets/phone.png">
-                <p v-text="tel" class="bottomInfo_home"></p>
-            </div>
-        </div>
+
     </div>
 </template>
 
@@ -91,7 +72,7 @@
         manager: '经理：XXX',
         tel: '客服：1234567890',
         query: '查看订单',
-        bookTable: '预订餐桌',
+        bookTable: '预订',
         bookFood: '预订菜品',
         phone: '',
         password: '',
@@ -335,18 +316,17 @@
     }
     .ellipse_home {
         box-shadow: #666 0px 0px 10px;        
-        width: 80%;
-        height: 250%;
-        margin-top: 15%;
+        width: 250px;
+        height: 250px;
+        margin-top: 5px;
         margin-bottom: 16px;
-        margin-left: 7.5%;
+        margin-left: 500px;
         border: 4px solid rgb(051, 069, 091);
         border-radius: 50%;
-
     }
     .ellipse_home img {
         width: 80%;
-        margin-left: 9%;
+        margin-left: 9px;
         margin-top:16px;
         height:80%;
         vertical-align: center;
@@ -367,6 +347,7 @@
         width: 70%;
         height:70%;
         font-size:18px;
+        margin-left: 430px;
     }
     #homeBottom .homeBottomInfo img {
       width: 40px;

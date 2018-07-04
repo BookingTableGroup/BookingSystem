@@ -126,11 +126,7 @@ export default {
     height: 400px;
     /* border: 1px solid blue; */
   }
-  #top_image {
-    background-image: url('../assets/bg3.jpeg');
-    background-size:cover;
-    height: 250px;
-  }
+
   #space {
      margin-top:10px;
     float: right;
@@ -280,24 +276,5 @@ export default {
     margin-left: 30px;
     margin-top: 5px;
     width: 12%;
-  }
-
-  #star1{
-    float: right;
-    margin-left: 35px;
-    margin-top: 10px;
-    width: 14%;
-  }
-  #star2{
-    float: right;
-    margin-left: 12px;
-    margin-top: 6px;
-    width: 15%;
-  }
-  #star3{
-    float: right;
-    margin-left: 35px;
-    margin-top: 4px;
-    width: 15%;
   }
 </style>
