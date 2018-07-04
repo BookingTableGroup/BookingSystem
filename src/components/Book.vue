@@ -126,7 +126,11 @@ export default {
     height: 400px;
     /* border: 1px solid blue; */
   }
-
+  #top_image {
+    background-image: url('../assets/bg3.jpeg');
+    background-size:cover;
+    height: 250px;
+  }
   #space {
      margin-top:10px;
     float: right;

@@ -49,7 +49,20 @@
         </div>
         <br/>
         <!--bottom information-->
-
+        <div id="homeBottom">
+            <div class="homeBottomInfo">
+                <img src="../assets/time.png">
+                <p v-text="time" class="bottomInfo_home"></p>
+            </div>
+            <div class="homeBottomInfo">
+                <img src="../assets/user.png">
+                <p v-text="manager" class="bottomInfo_home"></p>
+            </div>
+            <div class="homeBottomInfo">
+                <img src="../assets/phone.png">
+                <p v-text="tel" class="bottomInfo_home"></p>
+            </div>
+        </div>
     </div>
 </template>
 

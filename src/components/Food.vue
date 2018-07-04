@@ -103,11 +103,7 @@ export default {
 #container .el-menu-demo {
   margin-bottom: 15px;
 }
-#top_image_food {
-    background-image: url('../assets/bg5.jpg');
-    background-size:cover;
-    height: 280px;
-  }
+
 #sidebar {
   float: left;
   height: 400px;
