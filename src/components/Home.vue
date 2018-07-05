@@ -2,22 +2,40 @@
 
 <template>
     <div id="homePage" v-show="showHome">
-        <el-menu theme="dark" :default-active="activeIndex" class="el-menu-home" mode="horizontal">
-            <el-menu-item index="1"><router-link to="/home"><p id="topInfo_home">主页</p></router-link></el-menu-item>
-            <el-menu-item index="2" :style="{float: 'right'}">
-                <router-link v-show="!user.phone" to="/">登录</router-link>
-                <el-dropdown @command="loginOut">
-                <span :style="{color:'#FFF'}" v-show="user.phone">
-                {{user.phone}}<i class="el-icon-caret-bottom el-icon--right"></i>
-                </span>
-                <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item class="logOut" command>登出</el-dropdown-item>
-                </el-dropdown-menu>
-                </el-dropdown>
-            </el-menu-item>
-        </el-menu>
+            <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
+      <el-menu-item index="1"><router-link to="/">主页</router-link></el-menu-item>
+      <el-menu-item index="2" :style="{float: 'right'}">
+        <router-link v-show="!user.name" to="/login">登录</router-link>
+        <el-dropdown @command="loginOut">
+          <span :style="{color:'#FFF'}" v-show="user.name">
+          {{user.name}}<i class="el-icon-caret-bottom el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item command>登出</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </el-menu-item>
+    </el-menu>
+    <el-card class="box-card">
+      <p>Hello {{user.name}}</p>
+    </el-card>
         <!--top information:including the title and userInfo-->
+        <div id="topInfo_home">
+            <div id="h1_home" v-text="title"></div>
+            <div id="user_home" v-show="beforeLogin">
+            </div>
+            <div id="admin_home" v-show="beforeLogin">
+                <a></a>
+                    <button><img id="adminIcon_home" src="../assets/admin.png" @click="goAdmin"></button>
+                <p v-text="admin"></p>
+            </div>
+        </div>
         <br/>
+        <!--show when login success on the top right-->
+        <div id="userInfo_home" v-show="afterLogin">
+            <p v-text="phone"></p>
+            <img src="../assets/user.png">
+        </div>
         <div id="line_home"></div>
         <!--show pictures gallery about the restaurant dynamically-->
         <img src="../assets/left.png" id="left_home" v-on:click="moveLeft" v-bind:onmouseover ="clearAuto"
@@ -39,12 +57,18 @@
                 </div>
                 <button v-text="query" id="btn_home" @click="goQuery"></button>
             </div>
-
+            
+            <div class="selection_home">
+                <div class="ellipse_home">
+                    <img src="../assets/table.png">
+                </div>
+                <button v-text="bookTable" id="btn_home" @click="goBook"></button>
+            </div>
             <div class="selection_home">
                 <div class="ellipse_home">
                     <img src="../assets/food.png">
                 </div>
-                <button v-text="bookTable" id="btn_home" @click="goBook"></button>
+                <button v-text="bookFood" id="btn_home" @click="goFood"></button>
             </div>
         </div>
         <br/>
@@ -74,7 +98,7 @@
       return {
         activeIndex:'1',
         user:{
-          phone:localStorage.getItem('user')
+          name:''
         },
         showHome: true,
         title: '餐厅预订系统',
@@ -85,7 +109,7 @@
         manager: '经理：XXX',
         tel: '客服：1234567890',
         query: '查看订单',
-        bookTable: '预订',
+        bookTable: '预订餐桌',
         bookFood: '预订菜品',
         phone: '',
         password: '',
@@ -123,18 +147,38 @@
       }
     },
     components: {},
+    beforeCreate(){
+      // 当主页刷新时，如果服务端设置的cookie（包含sessionId）
+      // 的时效到了的话，便会提示未登录
+      this.$http.get('/api')
+        .then(res => {
+          console.dir(res.data)
+          if (res.data.error) {
+            this.$message.error(res.data.error);
+            this.user.name = null;
+            return false;
+          }else{
+            let user = localStorage.getItem('user');
+            if (user) {
+              this.user.name = user;
+            }
+          }
+        })
+        .catch(err => {
+            this.$message.error(`${err.message}`)
+        })
+    },
     methods: {
       ...mapActions(['userLoginOut']),
       // 登出loginOut
       loginOut(){
         this.userLoginOut();
-        this.user.phone = null;
-        this.$http.get('/api/delsession')
+        this.user.name = null;
+        this.$http.get('/api/user')
           .then(res => {
             console.dir(res.data)
             if (res.data.message) {
               this.$message.success(res.data.message);
-              this.$router.push('/');
               return false;
             }
           })
@@ -156,7 +200,7 @@
         this.cur = (this.cur + 7) % 8
       },
       goQuery: function () {
-        this.$router.push('/query')
+        this.$router.push('/list')
       },
       goBook: function () {
         this.$router.push('/book')
@@ -165,7 +209,7 @@
         this.$router.push('/food')
       },
       goAdmin: function () {
-        this.$router.push('/list')
+        this.$router.push('/admin')
       }
     },
     mounted: function () {
@@ -175,21 +219,16 @@
 </script>
 
 <style>
-    .el-menu-home {
-        padding-bottom: 30px;
-    }
     #topInfo_home {
-        color:white;
-        font-size:150%;
-        margin-top: 10px;
-        width:80%;
-        height:80%;
+        background-color: rgb(000, 188, 212);
+        height:130px;
+        box-shadow: #666 0px 0px 5px
     }
     #h1_home {
         color:white;
         font-size:400%;
         text-align: left;
-        padding-top:1%;
+        padding-top:3%;
         padding-left:2%;
         width:80%;
         height:80%;
@@ -258,8 +297,8 @@
         margin-top:0.5%;
         width:100%;
         height:1%;
-        border:solid 2px  rgb(051, 069, 091);
-        background: rgb(051, 069, 091);
+        border:solid 2px rgb(000, 188, 212);
+        background:rgb(000, 188, 212);
     }
     #photo-list_home {
         margin-left: 58px;
@@ -270,27 +309,28 @@
     ul {
         display: block;
     }
-    #photo-list_home li {
+    li {
         display: inline-block;
         list-style: none;
-        width: 22%;
+        width: 20%;
     }
     #left_home,#right_home {
         padding-top: 50px;
         width: 40px;
         height:90px;
+        
     }
     #left_home {
         float: left;
         padding-left:2px;
     }
     #right_home {
-        margin-top: -180px;
+        margin-top: -155px;
         float: right;
     }
     .pic_home {
         margin-top:2px;
-        width: 100%;
+        width: 80%;
         height: 153px;
         float: left;
         overflow: hidden;
@@ -299,22 +339,12 @@
     }
 
     #menu_home {
-        background-image: url('../assets/bg1.png');
-        background-size:cover;
-        height: 450px;
+        height: 300px;
         box-shadow: #666 0px 0px 10px;
     }
-    #homePage {
-      height: 100px;
-      background-color: rgb(051, 069, 091);
-    }
-    #homeBottom{
-      background-size:cover;
-      height: 100px;
-      background-color: rgb(051, 069, 091);
-    }
-    #homeBottom {
-        background-color:rgb(051, 069, 091);
+    #homePage #homeBottom {
+      height: 90px;
+      background-color: rgb(000, 188, 212);
     }
     .homeBottomInfo {
         float:left;
@@ -322,45 +352,45 @@
     }
     .selection_home {
         margin-top:3%;
-        margin-left:6%;
+        margin-left:7%;
         height:20%;
         width: 25%;
         float: left;
     }
     .ellipse_home {
-        box-shadow: #666 0px 0px 10px;        
-        width: 250px;
-        height: 250px;
-        margin-top: 5px;
+        width: 80%;
+        height: 250%;
+        margin-top: 0%;
+        margin-left: 11%;
         margin-bottom: 16px;
-        margin-left: 500px;
-        border: 4px solid rgb(051, 069, 091);
+        border: 4px solid rgb(000, 188, 212);
         border-radius: 50%;
+
     }
     .ellipse_home img {
         width: 80%;
-        margin-left: 9px;
+        margin-left: 4%;
         margin-top:16px;
         height:80%;
         vertical-align: center;
     }
     #menu__home {
-        background-color:rgb(051, 069, 091);
+        background-color:rgb(000, 188, 212);
         color:white;
         border-radius: 10px;
         width: 70%;
         height:35px;
         font-size:18px;
-        margin-left:8%;
+        margin-left:10%;
     }
     #btn_home {
-        background-color:rgb(051, 069, 091);
+        background-color:rgb(000, 188, 212);
         color:white;
         border-radius: 10px;
-        width: 70%;
-        height:70%;
+        width: 100%;
+        height:55%;
         font-size:18px;
-        margin-left: 430px;
+        margin-left:0%;
     }
     #homeBottom .homeBottomInfo img {
       width: 40px;
@@ -370,8 +400,5 @@
       color:white;
       text-align:center;
       padding-top:5px;
-    }
-    .logOut {
-        width:80%;
     }
 </style>
