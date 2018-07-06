@@ -252,29 +252,6 @@ router.post("/getFood", (req, res) => {
   });   
 });
 
-// 添加
-router.post("/userAdd", (req, res) => {
-  User.findOne({
-    phone: req.body.phone
-    })
-    .then(user => {
-      if (user) {
-        res.json({
-          success: false,
-          error: '错误'
-        })
-      } else {
-        User.create(req.body, (err, user) => {
-          if (err) {
-            res.json(err);
-          } else {
-            res.json(user);
-          }
-        });
-      }
-    })
-});
-
 module.exports = router;
 
 
