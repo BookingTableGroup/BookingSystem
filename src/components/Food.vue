@@ -107,7 +107,7 @@ export default {
     background-image: url('../assets/bg5.jpg');
     background-size:cover;
     height: 280px;
-}
+  }
 #sidebar {
   float: left;
   height: 400px;

@@ -5,7 +5,7 @@
     </el-menu>
     <div>
         <div id= "space"></div>
-
+       
         <div>
           <div id="curOrder">
           <img id="menu_icon" src="../assets/food.png">
@@ -54,7 +54,7 @@
       </div>
       <div id="query_but">
         <el-button  @click="deleteOrder">删除订单</el-button>
-
+        
       </div>
       <div id="line_query_3"></div>
     </section>
@@ -99,7 +99,7 @@ export default {
     deleteOrder: function() {
       var that = this;
       var myphone = localStorage.getItem('user');
-
+        
       this.$confirm("删除此订单, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
@@ -132,6 +132,7 @@ export default {
         });
     }
   },
+
     //页面初始化进来查询数据
   mounted: function() {
     this.getAll();
@@ -191,10 +192,12 @@ export default {
     border: 4px solid rgb(051, 069, 091);
     border-radius: 50%;
   }
+
   #ellipse_query img {
     width: 100%;
     height:100%;
   }
+
   #container {
     height: 400px;
     /* border: 1px solid blue; */
@@ -305,4 +308,5 @@ export default {
     /*box-shadow: #666 0px 0px 5px;*/
     border:  3px solid rgb(051, 069, 091);
   }
+
 </style>

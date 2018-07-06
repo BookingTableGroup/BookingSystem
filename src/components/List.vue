@@ -1,6 +1,9 @@
 <template lang="html">
 
   <div class="list">
+    <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
+      <el-menu-item index="1"><router-link to="/">返回登录界面</router-link></el-menu-item>
+    </el-menu>
       <el-table
     :data="tableData"
     stripe
@@ -9,9 +12,10 @@
     v-loading.fullscreen.lock="loading"
     empty-text="亲，暂时没有数据哦"
     border
+    align="center"
     style="width: 100%">
             <el-table-column
-            fixed
+           
             prop="phone"
             label="电话"
             align="center"
@@ -27,25 +31,27 @@
 
             <el-table-column
             prop="table"
-            label="桌号"
+            label="桌子大小"
             align="center"
-            width="120">
+            width="200">
             </el-table-column>
 
             <el-table-column
             prop="time"
-            label="预定时间"
+            label="预订时间"
             align="center"
-            width="200">
+            width="250">
             </el-table-column>
             
             <el-table-column
             label="操作"
             align="center"
-            width="360">
+            width="400">
               <template slot-scope="scope">
+                  <el-button  size="small" type="success" @click="checkFood(scope.row['_id'])">查看菜品</el-button>
                   <el-button  size="small" type="success" @click="modify(scope.row)">修改</el-button>
-                  <el-button type="danger" size="small" @click="deleteDate(scope.row['_id'])">删除</el-button>
+                  <el-button type="danger" size="small" @click="deleteOrder(scope.row['_id'])">删除订单</el-button>                  
+                  <el-button type="danger" size="small" @click="deleteDate(scope.row['_id'])">删除用户</el-button>
               </template>
             </el-table-column>
   </el-table>
@@ -65,12 +71,13 @@
     <el-form-item label="桌子大小" :label-width="formLabelWidth">
       <el-select v-model="addForm.table" placeholder="请选择桌号" class="tableArea">
         <el-option label="8人桌" value="8"></el-option>
-        <el-option label="12人桌" value="12"></el-option>
+        <el-option label="10人桌" value="10"></el-option>
+        <el-option label="16人桌" value="16"></el-option>
       </el-select>
     </el-form-item>
 
-    <el-form-item label="预定时间" :label-width="formLabelWidth">
-      <el-select v-model="addForm.time" placeholder="请选择预定时间" class="tableArea">
+    <el-form-item label="预订时间" :label-width="formLabelWidth">
+      <el-select v-model="addForm.time" placeholder="请选择预订时间" class="tableArea">
         <el-option label="11:00-14:00" value="11:00-14:00"></el-option>
         <el-option label="17:00-21:00" value="17:00-21:00"></el-option>
       </el-select>
@@ -99,12 +106,13 @@
     <el-form-item label="桌子大小" :label-width="formLabelWidth">
       <el-select v-model="modifyForm.table" placeholder="请选择桌号" class="sexArea">
         <el-option label="8人桌" value="8"></el-option>
-        <el-option label="12人桌" value="12"></el-option>
+        <el-option label="10人桌" value="10"></el-option>
+        <el-option label="16人桌" value="16"></el-option>
       </el-select>
     </el-form-item>
 
-    <el-form-item label="预定时间" :label-width="formLabelWidth">
-      <el-select v-model="modifyForm.time" placeholder="请选择预定时间" class="tableArea">
+    <el-form-item label="预订时间" :label-width="formLabelWidth">
+      <el-select v-model="modifyForm.time" placeholder="请选择预订时间" class="tableArea">
         <el-option label="11:00-14:00" value="11:00-14:00"></el-option>
         <el-option label="17:00-21:00" value="17:00-21:00"></el-option>
       </el-select>
@@ -118,7 +126,12 @@
   </div>
 </el-dialog>
 
-
+<el-dialog title="查看菜品" :visible.sync="foodVisible" size="tiny">
+  <el-table :data="foodData.foods">
+    <el-table-column property="name" label="菜名" align="center" width="257"></el-table-column>
+    <el-table-column property="price" label="价格" align="center" width="257"></el-table-column>
+  </el-table>
+</el-dialog>
 
 <el-button type="primary" class="addBtn" @click="add" icon="el-icon-plus">添加</el-button>
   
@@ -130,13 +143,14 @@ export default {
   name: "list",
   data: function() {
     return {
-      title: "hello world",
+      total: 0,
       tableData: [],
+      foodData: [],
       addFormVisible: false,
       modifyFormVisible: false,
       addpicVisible: false,
+      foodVisible: false,
       modifyId: "",
-
       addForm: {
         phone: "",
         password: "",
@@ -166,8 +180,8 @@ export default {
       var addObj = this.addForm;
 
       this.$http.post("/api/user", addObj).then(
-        function(response) {
-          if (response.ok) {
+        function(res) {
+          if (!res.data.error) {
             this.$message({
               message: "添加成功",
               type: "success",
@@ -175,10 +189,12 @@ export default {
                 that.getAll();
               }
             });
+          } else {
+            this.$message({
+              message: "添加失败",
+              type: "error"
+            })
           }
-        },
-        function() {
-          // this.loading = false;
         }
       );
     },
@@ -197,8 +213,7 @@ export default {
     },
     modifySure: function() {
       var that = this;
-      this.$http
-        .put(`/api/user/${this.modifyId}`, this.modifyForm, {
+      this.$http.put(`/api/user/${this.modifyId}`, this.modifyForm, {
           emulateJSON: true
         })
         .then(
@@ -219,7 +234,7 @@ export default {
           }
         );
     },
-    // 删除操作
+    // 删除用户操作
     deleteDate: function(id) {
       var that = this;
       var deleteId = id;
@@ -235,13 +250,13 @@ export default {
               if (response.ok) {
                 this.$message({
                   type: "success",
-                  message: "删除成功!"
+                  message: "删除用户成功!"
                 });
                 that.getAll();
               } else {
                 this.$message({
                   type: "error",
-                  message: "删除失败!"
+                  message: "删除用户失败!"
                 });
               }
             },
@@ -256,6 +271,64 @@ export default {
             message: "已取消删除"
           });
         });
+    },
+        // 删除订单操作
+    deleteOrder: function(id) {
+      var that = this;
+      var deleteOrderderId = id;
+
+      this.$confirm("此操作将删除该订单, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      })
+        .then(() => {
+          this.$http.put(`/api/deleteOrder/${deleteOrderderId}`).then(
+            function(response) {
+              if (response.ok) {
+                this.$message({
+                  type: "success",
+                  message: "删除订单成功!"
+                });
+                that.getAll();
+              } else {
+                this.$message({
+                  type: "error",
+                  message: "删除订单失败!"
+                });
+              }
+            },
+            function() {
+              // this.loading = false;
+            }
+          );
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除"
+          });
+        });
+    },
+    //查看菜品
+    checkFood: function(id) {
+      this.foodVisible = true;
+      var checkId = id;
+      this.$http.get(`/api/user/${checkId}`).then(
+            function(response) {
+              if (response.ok) {
+                this.foodData = response.body;
+                for (let index = 0; index <  this.foodData.foods.length; index++) {
+                    this.total = this.foodData.foods[index].price + this.total;
+                }
+              } else {
+                this.$message({
+                  type: "error",
+                  message: "查询失败!"
+                });
+              }
+            }
+      );
     },
     // 获取全部数据
     getAll: function() {
@@ -291,7 +364,7 @@ export default {
   color: #000;
 }
 div.list {
-  width: 90%;
+  width: 73.7%;
   margin: 0 auto;
 }
 .addBtn {
